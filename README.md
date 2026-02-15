@@ -1,4 +1,4 @@
-# VeinoTronic 2.0 — Hackathon Battle Plan
+# VeinoSense 1.0 — Hackathon Battle Plan
 
 ## Core Strategy
 
