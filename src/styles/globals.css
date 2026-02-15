@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS CUSTOM PROPERTIES ─────────────────────────────── */
+:root {
+  --vein-primary: #00e5ff;
+  --vein-secondary: #00bcd4;
+  --vein-glow: rgba(0, 229, 255, 0.35);
+  --surface-base: #0a0e1a;
+  --surface-card: #0f1629;
+  --surface-elevated: #151d38;
+  --text-primary: #e8eaf6;
+  --text-muted: #7986a0;
+  --danger: #ef4444;
+  --warning: #eab308;
+  --success: #22c55e;
+}
+
+/* ─── BASE RESETS ───────────────────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Exo 2', sans-serif;
+  background: var(--surface-base);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Subtle grid background pattern */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── SCROLLBAR STYLING ─────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--surface-base);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--vein-secondary);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--vein-primary);
+}
+
+/* ─── UTILITY CLASSES ───────────────────────────────────── */
+@layer components {
+  .glass-card {
+    background: rgba(15, 22, 41, 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 229, 255, 0.1);
+    border-radius: 12px;
+  }
+
+  .glass-card:hover {
+    border-color: rgba(0, 229, 255, 0.25);
+    box-shadow: 0 0 30px rgba(0, 229, 255, 0.08);
+  }
+
+  .glow-text {
+    color: var(--vein-primary);
+    text-shadow: 0 0 12px var(--vein-glow);
+  }
+
+  .glow-border {
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.1), inset 0 0 15px rgba(0, 229, 255, 0.05);
+  }
+
+  .vein-gradient {
+    background: linear-gradient(135deg, var(--vein-primary), var(--vein-secondary));
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #00e5ff, #00bcd4, #26c6da);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* ─── SELECTION ─────────────────────────────────────────── */
+::selection {
+  background: rgba(0, 229, 255, 0.3);
+  color: #fff;
+}
