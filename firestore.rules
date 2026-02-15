@@ -1,0 +1,33 @@
+// ═══════════════════════════════════════════════════════════════
+// FIRESTORE SECURITY RULES — Hackathon mode (test/demo)
+// ═══════════════════════════════════════════════════════════════
+// Paste this into: Firebase Console → Firestore → Rules
+//
+// WARNING: These are WIDE OPEN for hackathon demo purposes.
+// In production you'd lock these down with auth checks.
+// ═══════════════════════════════════════════════════════════════
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Patients collection
+    match /patients/{patientId} {
+      allow read: if true;
+      allow write: if true;
+
+      // Scans subcollection
+      match /scans/{scanId} {
+        allow read: if true;
+        allow write: if true;
+      }
+    }
+
+    // Recommendations log (optional analytics)
+    match /recommendations/{recId} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if false;  // Append-only log
+    }
+  }
+}
